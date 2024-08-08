@@ -1,0 +1,26 @@
+USE 150424_wdm_Christina;
+CREATE TABLE customer (
+    customer_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(100),
+    last_name VARCHAR(100) NOT NULL,
+    street VARCHAR(100) NOT NULL,
+    zip_code VARCHAR(100) NOT NULL,
+    citi VARCHAR(100) NOT NULL,
+    country VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    date_of_registration DATE
+);
+SELECT * FROM customer;
+
+
+CREATE TABLE orders (
+    orders_id INT PRIMARY KEY AUTO_INCREMENT,
+    customer_id INT,
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    item_name VARCHAR(100) NOT NULL,
+    item_description TEXT NOT NULL,
+    item_photo_url VARCHAR(255),
+    item_price NUMERIC(10 , 2 ) NOT NULL,
+    FOREIGN KEY (customer_id)
+        REFERENCES customer (customer_id)
+);
